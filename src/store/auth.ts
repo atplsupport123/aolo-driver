@@ -32,14 +32,16 @@ export const useAuth = create<AuthState>((set, get) => ({
       setToken(null);
       set({ token: null, driver: null });
     });
-    const token = await loadToken();
-    if (!token) return set({ ready: true });
-    set({ token });
     try {
+      const token = await loadToken();
+      if (!token) return set({ ready: true });
+      set({ token });
       const driver = await driverApi.me();
       useLang.getState().setLang(driver.language);
       set({ driver, ready: true });
     } catch {
+      // SecureStore can reject on some devices after restore or OS credential
+      // changes. Always finish startup so the app can show the sign-in screen.
       set({ ready: true });
     }
   },
