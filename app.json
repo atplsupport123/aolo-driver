@@ -1,0 +1,77 @@
+{
+  "expo": {
+    "name": "AOLO Driver",
+    "slug": "aolo-driver",
+    "scheme": "aolodriver",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.aolocabs.driver",
+      "permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION",
+        "android.permission.CAMERA",
+        "android.permission.VIBRATE",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "REPLACE_WITH_GOOGLE_MAPS_ANDROID_KEY"
+        }
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.aolocabs.driver",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "AOLO uses your location while you are online and during trips so riders can be matched and see you coming.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "AOLO uses your location during trips, even when the app is in the background.",
+        "UIBackgroundModes": [
+          "location",
+          "remote-notification"
+        ]
+      }
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-sqlite",
+      [
+        "expo-location",
+        {
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true,
+          "locationAlwaysAndWhenInUsePermission": "AOLO uses your location during trips, even when the app is in the background."
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Take photos of your documents, odometer and toll receipts."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Choose photos of your documents and receipts."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#101010"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1125c66a-c487-4e41-bcaa-3a1cc1610ba0"
+      }
+    },
+    "owner": "sumbul11"
+  }
+}
